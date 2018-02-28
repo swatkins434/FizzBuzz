@@ -29,11 +29,13 @@ class DictionaryBuild(argparse.Action):
 
         setattr(namespace, self.dest, newDict)
 
+# Defualt word dictionary to use if one is not supplied
 defaultWordDict = {
     3 : "fizz",
     5 : "buzz"
 }
 
+# Function for generating output string
 def getOutput(wordDict, currentNum):
     out = ""
 
@@ -46,6 +48,7 @@ def getOutput(wordDict, currentNum):
 
     return out
 
+# Function for parsing command line arguments to build new word dictionary
 def parseArgs(args):
     parser = argparse.ArgumentParser(
         description = "Parse arguments from a comma-separated key-value list into a dict."
@@ -62,11 +65,14 @@ def parseArgs(args):
     if len(args) == 1:
         return defaultWordDict
     else:
+        # Pull newly built dictionary out of the parser's namespace
         return parser.parse_args(args[1:]).newDict
 
 def main():
+    # Parse command line arguments and return the appropriate word dictionary
     wordDict = parseArgs(sys.argv)
 
+    # Output appropriate line for each integer in list
     for i in xrange(1,100):
         print getOutput(wordDict, i)
 
