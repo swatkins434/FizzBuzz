@@ -23,6 +23,7 @@ procedure FizzBuzz is
         return output;
     end GetOutput;
 begin -- FizzBuzz
+    -- Iterate through the conventional range of numbers
     for i in 1 .. 100 loop
         Put_Line(To_String(GetOutput(i)));
     end loop;
